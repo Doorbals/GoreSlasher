@@ -13,5 +13,19 @@ UCLASS()
 class GORESLASHER_API UGSAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
+
+private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = true))
+	float GroundDistance;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = true))
+	TObjectPtr<ACharacter> CharacterRef;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = true))
+	TObjectPtr<class UCharacterMovementComponent> CharacterMovementCompRef;
+
+private:
+	virtual void NativeInitializeAnimation() override;
 	
+	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 };
